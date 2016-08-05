@@ -44,6 +44,15 @@ function newEmitterCustom(type, size, spread, frequency, duration, velocity, gra
   });
 }
 
+function newEmoji() {
+    var emojiID = Math.floor(Math.random() * images.length);
+    var initX = Math.floor(Math.random() * ctx.canvas.width); 
+    var initY = -200;
+    var initVelX = Math.floor((Math.random() * -5) + 2.5);
+    var initVelY = Math.floor(Math.random() * 5);
+    return ({emoji: emojiID, posX: initX, posY: initY, velX: initVelX, velY: initVelY});
+}
+
 function update() {
   //Update each emitter
   for (var i = 0; i < emitters.length; i++) {
