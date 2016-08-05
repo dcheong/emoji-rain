@@ -1,3 +1,5 @@
+var exports = modules.exports = {};
+
 var c;
 var ctx;
 var width;
@@ -7,7 +9,7 @@ var sources;
 var FPS = 60;
 var on = false;
 
-function init(id) {
+exports.init = function(id) {
   c = document.getElementById(id);
   ctx = c.getContext("2d");
   width = window.innerWidth;
@@ -18,7 +20,7 @@ function init(id) {
 /*
 takes in an emitter preset specifier and adds that preset to the list of emitters.
 */
-function newEmitter(preset, position) {
+exports.newEmitter = function(preset, position) {
 }
 /*
 takes in an emitter with custom properties and adds it to the list of emitters.
@@ -29,7 +31,7 @@ frequency: amount of times per second an emoji is spawned
 duration: how long the emoji lasts, -1 for infinite (disappears once off the canvas)
 velocity: 
 */
-function newEmitterCustom(type, size, spread, frequency, duration, velocity, gravity, position, live) {
+exports.newEmitterCustom = function(type, size, spread, frequency, duration, velocity, gravity, position, live) {
   emitters.push({
     type: type,
     size: size,
@@ -43,8 +45,7 @@ function newEmitterCustom(type, size, spread, frequency, duration, velocity, gra
     emojis: []
   });
 }
-
-function newEmoji() {
+exports.newEmoji = function() {
     var emojiID = Math.floor(Math.random() * images.length);
     var initX = Math.floor(Math.random() * ctx.canvas.width); 
     var initY = -200;
@@ -53,7 +54,7 @@ function newEmoji() {
     return ({emoji: emojiID, posX: initX, posY: initY, velX: initVelX, velY: initVelY});
 }
 
-function update() {
+exports.update = function() {
   //Update each emitter
   for (var i = 0; i < emitters.length; i++) {
 
